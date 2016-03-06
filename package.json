@@ -8,8 +8,8 @@
     "start": "node index.js"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/Junicus/fcc-filemetadata.git"
+    "type": "git",
+    "url": "https://github.com/Junicus/fcc-filemetadata.git"
   },
   "keywords": [
     "node",
@@ -19,5 +19,9 @@
     "metadata"
   ],
   "author": "Junicus",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.4"
+  }
 }
