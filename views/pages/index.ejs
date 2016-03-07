@@ -5,11 +5,24 @@
 </head>
 
 <body>
-<p>Hello World</p>
-<form id="file-form" enctype="multipart/form-data">
-    <input type="file" name="fileToAnalyze" />
-    <input type="submit" value="Send" />
+<p>File Metadata Simple Interface</p>
+<form action="/api/file" method="post" enctype="multipart/form-data">
+    <input type="file" name="filesToAnalyze" multiple/>
+    <button>Upload</button>
 </form>
+
+<div class="metapanel collapsed">
+    <h1>File Metadata</h1>
+    <span class="jsondata"></span>
+    <ul class="filelist">
+    </ul>
+</div>
+
+<div class="erropanel collapsed">
+    <h1>Errors</h1>
+    <p class="errormsg"></p>
+</div>
+
 <script src="js/scripts.js"></script>
 </body>
 </html>

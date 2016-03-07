@@ -1,0 +1,11 @@
+h1 {
+    font-size: 16px
+}
+
+.collapsed {
+ visibility: collapse   
+}
+
+.errormsg {
+    color: red
+}

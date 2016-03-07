@@ -1,18 +1,9 @@
 $(document).ready(function () {
-  var files
-  $('input[type=file]').on('change', function (event) {
-    files = event.target.files
-  })
-
   $('form').on('submit', function (event) {
     event.stopPropagation()
     event.preventDefault()
 
-    var data = new FormData()
-    $.each(files, function (key, value) {
-      data.append(key, value)
-    })
-
+    var data = new FormData(this)
     $.ajax({
       url: window.location.origin + '/api/file',
       type: 'POST',
@@ -21,11 +12,21 @@ $(document).ready(function () {
       processData: false,
       contentType: false,
       error: function (jqXHR, textStatus, errorThrown) {
-        aler('Error: ' + textStatus)
+        $('.erropanel').toggleClass('collapsed')
+        $('.errormsg').html(textStatus)
       },
       success: function (data) {
-        alert(data)
-      // alert('FILE SIZE: ' + data.filesize)
+        $('.metapanel').toggleClass('collapsed')
+        // $('.jsondata').html(JSON.stringify(data))
+        data['files'].forEach(function (elem) {
+          var filename = $('<span />', {text: 'Filename: ' + elem.originalname})
+          var filesize = $('<span />', {text: 'Filesize: ' + elem.size})
+          var item = $('<li />')
+          item.append(filename)
+          item.append(', ')
+          item.append(filesize)
+          $('.filelist').append(item)
+        })
       }
     })
   })
