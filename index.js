@@ -31,7 +31,7 @@ app.post('/api/file', upload.array('filesToAnalyze', 3), function (req, res, nex
       }
     )
 
-    var filePath = __dirname + '\\' + file.path
+    var filePath = __dirname + '/' + file.path
     console.log('Removing: ' + filePath)
     fs.unlinkSync(filePath)
   })
